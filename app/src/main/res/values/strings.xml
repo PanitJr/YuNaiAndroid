@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">YuNai</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="create_group">Create Group</string>
+    <string name="find_group">Find Group</string>
+    <string name="wellcome">Wellcome</string>
+    <string name="username_edit_hint">Enter Your Nick Name</string>
+</resources>
