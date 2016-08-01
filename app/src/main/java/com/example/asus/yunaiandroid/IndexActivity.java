@@ -7,10 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.example.asus.yunaiandroid.action.UserAction;
 import com.example.asus.yunaiandroid.entity.User;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -23,7 +27,9 @@ public class IndexActivity extends AppCompatActivity {
     public static final String API_URL = "http://192.168.131.78:8080";
     private static Retrofit retrofit = null;
     User user;
-
+    private final String CONTACTS_PATH = "/contacts";
+    private ListView mContactListView;
+    public static final String USER = "USER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +47,21 @@ public class IndexActivity extends AppCompatActivity {
         if(username.getText().toString().equals("")){
             user = new User (getSaltString());}
         else{
-            user = new User(username.getText().toString());}
-                Call<User> call = userAction.createUser(user);
-                call.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        Log.d("Debug",response.body().toString());
-                        User u = response.body();
-                        Log.d("Debug", u.getName());
-                        linkToMain();
-                    }
+            user = new User(username.getText().toString());
+        }
+        Call<User> call = userAction.createUser(user);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
 
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Log.d("Fail",t.getMessage());
-                    }
-                });
+                linkToMain(user);
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.d("Fail",t.getMessage());
+            }
+        });
 
 
     }
@@ -71,8 +76,10 @@ public class IndexActivity extends AppCompatActivity {
         String saltStr = salt.toString();
         return saltStr;
     }
-    private void linkToMain(){
-        Intent intent = new Intent(this,MainMenuActivity.class);
+    private void linkToMain(User user){
+
+        Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
+        intent.putExtra(USER, (Serializable) user);
         startActivity(intent);
     }
 }

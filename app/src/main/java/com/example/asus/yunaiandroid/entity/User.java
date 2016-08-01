@@ -1,9 +1,11 @@
 package com.example.asus.yunaiandroid.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Asus on 1/8/2559.
  */
-public class User {
+public class User implements Serializable {
     Long id;
     String name;
 
