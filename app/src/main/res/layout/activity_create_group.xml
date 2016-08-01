@@ -68,6 +68,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPassword"
                     android:layout_below="@+id/linearLayout"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
@@ -93,14 +94,16 @@
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"/>
+                    android:layout_weight="0.32"
+                    android:text="0" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="HH/MM"
-                    android:id="@+id/textView2" />
+                    android:id="@+id/time_picker_label" />
                 <EditText
+                    android:id="@+id/time_picker"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.32" />

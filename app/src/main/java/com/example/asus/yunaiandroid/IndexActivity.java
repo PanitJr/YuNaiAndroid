@@ -20,7 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class IndexActivity extends AppCompatActivity {
-    public static final String API_URL = "http://192.168.1.34:8080";
+    public static final String API_URL = "http://192.168.131.78:8080";
     private static Retrofit retrofit = null;
     User user;
 
